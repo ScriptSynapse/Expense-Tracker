@@ -1,0 +1,75 @@
+version: '3.9'
+
+services:
+  # MongoDB
+  mongo:
+    image: mongo:7.0
+    container_name: expense_mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: expense_tracker
+
+  # Node.js Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: expense_backend
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      MONGODB_URI: mongodb://mongo:27017/expense_tracker
+      JWT_SECRET: ${JWT_SECRET:-change-this-in-production}
+      JWT_EXPIRE: 7d
+      AI_SERVICE_URL: http://ai-service:8000
+      AI_SERVICE_KEY: ${AI_SERVICE_KEY:-internal-key}
+      CLIENT_URL: ${CLIENT_URL:-http://localhost:3000}
+    volumes:
+      - backend_uploads:/app/uploads
+      - backend_logs:/app/logs
+    depends_on:
+      - mongo
+      - ai-service
+
+  # Python FastAPI AI microservice
+  ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    container_name: expense_ai
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      AI_SERVICE_KEY: ${AI_SERVICE_KEY:-internal-key}
+    volumes:
+      - ai_models:/app/models/saved
+      - ai_data:/app/data
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_API_URL: ${REACT_APP_API_URL:-http://localhost:5000/api}
+    container_name: expense_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
+  backend_uploads:
+  backend_logs:
+  ai_models:
+  ai_data:
