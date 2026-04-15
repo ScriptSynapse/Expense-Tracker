@@ -1,150 +1,757 @@
 [
-  {"description": "Uber ride to office", "amount": 250, "category": "Transport"},
-  {"description": "Ola cab airport", "amount": 450, "category": "Transport"},
-  {"description": "Metro card recharge", "amount": 200, "category": "Transport"},
-  {"description": "Petrol fill up", "amount": 3000, "category": "Transport"},
-  {"description": "Bus ticket local", "amount": 15, "category": "Transport"},
-  {"description": "Auto rickshaw to market", "amount": 80, "category": "Transport"},
-  {"description": "Flight ticket Delhi Mumbai", "amount": 5500, "category": "Transport"},
-  {"description": "Parking charges mall", "amount": 100, "category": "Transport"},
-  {"description": "Toll plaza highway", "amount": 155, "category": "Transport"},
-  {"description": "Rapido bike taxi", "amount": 60, "category": "Transport"},
-  {"description": "Lyft ride home", "amount": 18, "category": "Transport"},
-  {"description": "Train ticket IRCTC", "amount": 750, "category": "Transport"},
-
-  {"description": "Zomato dinner order", "amount": 450, "category": "Food & Dining"},
-  {"description": "Swiggy lunch biryani", "amount": 280, "category": "Food & Dining"},
-  {"description": "Starbucks coffee latte", "amount": 350, "category": "Food & Dining"},
-  {"description": "Grocery D-Mart vegetables", "amount": 1200, "category": "Food & Dining"},
-  {"description": "McDonald's combo meal", "amount": 350, "category": "Food & Dining"},
-  {"description": "Pizza Hut order", "amount": 600, "category": "Food & Dining"},
-  {"description": "Supermarket weekly groceries", "amount": 2500, "category": "Food & Dining"},
-  {"description": "Restaurant dinner with family", "amount": 2200, "category": "Food & Dining"},
-  {"description": "Milk and bread convenience store", "amount": 120, "category": "Food & Dining"},
-  {"description": "KFC bucket chicken", "amount": 550, "category": "Food & Dining"},
-  {"description": "Breakfast café croissant", "amount": 180, "category": "Food & Dining"},
-  {"description": "Dominos pizza order online", "amount": 480, "category": "Food & Dining"},
-  {"description": "Tea and snacks office", "amount": 50, "category": "Food & Dining"},
-  {"description": "Farmer market fresh produce", "amount": 450, "category": "Food & Dining"},
-  {"description": "Sushi restaurant date night", "amount": 3200, "category": "Food & Dining"},
-  {"description": "UberEats burger order", "amount": 22, "category": "Food & Dining"},
-
-  {"description": "Amazon order earphones", "amount": 1800, "category": "Shopping"},
-  {"description": "Flipkart mobile phone", "amount": 15000, "category": "Shopping"},
-  {"description": "Myntra shirt kurta", "amount": 1200, "category": "Shopping"},
-  {"description": "Nike running shoes", "amount": 4500, "category": "Shopping"},
-  {"description": "Shopping mall clothes", "amount": 3200, "category": "Shopping"},
-  {"description": "Book purchase Flipkart", "amount": 350, "category": "Shopping"},
-  {"description": "Home decor items online", "amount": 2100, "category": "Shopping"},
-  {"description": "Stationery supplies office", "amount": 450, "category": "Shopping"},
-  {"description": "Laptop bag backpack", "amount": 1800, "category": "Shopping"},
-  {"description": "Walmart groceries and household", "amount": 85, "category": "Shopping"},
-  {"description": "Target home supplies", "amount": 60, "category": "Shopping"},
-
-  {"description": "Netflix subscription monthly", "amount": 649, "category": "Entertainment"},
-  {"description": "Spotify premium plan", "amount": 119, "category": "Entertainment"},
-  {"description": "Amazon Prime renewal", "amount": 1499, "category": "Entertainment"},
-  {"description": "Movie ticket PVR", "amount": 350, "category": "Entertainment"},
-  {"description": "Concert tickets Coldplay", "amount": 5000, "category": "Entertainment"},
-  {"description": "Steam game purchase", "amount": 1200, "category": "Entertainment"},
-  {"description": "Disney Plus hotstar", "amount": 299, "category": "Entertainment"},
-  {"description": "IPL match tickets", "amount": 800, "category": "Entertainment"},
-  {"description": "YouTube premium", "amount": 189, "category": "Entertainment"},
-  {"description": "PS5 game Spider-Man", "amount": 3999, "category": "Entertainment"},
-  {"description": "Hulu subscription", "amount": 18, "category": "Entertainment"},
-  {"description": "Amusement park tickets", "amount": 1200, "category": "Entertainment"},
-
-  {"description": "Electricity bill monthly", "amount": 2200, "category": "Bills & Utilities"},
-  {"description": "Airtel broadband internet", "amount": 999, "category": "Bills & Utilities"},
-  {"description": "Jio recharge monthly", "amount": 239, "category": "Bills & Utilities"},
-  {"description": "Gas cylinder booking", "amount": 900, "category": "Bills & Utilities"},
-  {"description": "Water bill quarterly", "amount": 450, "category": "Bills & Utilities"},
-  {"description": "DTH subscription tata sky", "amount": 300, "category": "Bills & Utilities"},
-  {"description": "Home insurance premium", "amount": 8000, "category": "Bills & Utilities"},
-  {"description": "Car insurance renewal", "amount": 12000, "category": "Bills & Utilities"},
-  {"description": "Phone bill Verizon", "amount": 75, "category": "Bills & Utilities"},
-  {"description": "AT&T wireless plan", "amount": 65, "category": "Bills & Utilities"},
-  {"description": "Credit card EMI payment", "amount": 5000, "category": "Bills & Utilities"},
-
-  {"description": "Doctor consultation fee", "amount": 500, "category": "Health & Medical"},
-  {"description": "Pharmacy medicine purchase", "amount": 850, "category": "Health & Medical"},
-  {"description": "Gym membership monthly", "amount": 1500, "category": "Health & Medical"},
-  {"description": "Blood test lab diagnostics", "amount": 1200, "category": "Health & Medical"},
-  {"description": "Dentist appointment cleaning", "amount": 1500, "category": "Health & Medical"},
-  {"description": "Health insurance premium", "amount": 15000, "category": "Health & Medical"},
-  {"description": "Yoga class monthly", "amount": 2000, "category": "Health & Medical"},
-  {"description": "Physiotherapy session", "amount": 800, "category": "Health & Medical"},
-  {"description": "Eye checkup ophthalmologist", "amount": 600, "category": "Health & Medical"},
-  {"description": "Prescription drugs CVS", "amount": 45, "category": "Health & Medical"},
-  {"description": "Protein powder supplement", "amount": 2200, "category": "Sports & Fitness"},
-
-  {"description": "Hotel booking Goa trip", "amount": 8000, "category": "Travel"},
-  {"description": "Airbnb stay weekend", "amount": 3500, "category": "Travel"},
-  {"description": "MakeMyTrip flight booking", "amount": 12000, "category": "Travel"},
-  {"description": "Visa application fee", "amount": 7500, "category": "Travel"},
-  {"description": "Travel insurance policy", "amount": 2000, "category": "Travel"},
-  {"description": "Suitcase purchase trip", "amount": 4500, "category": "Travel"},
-  {"description": "Expedia hotel resort", "amount": 250, "category": "Travel"},
-  {"description": "Foreign currency exchange", "amount": 10000, "category": "Travel"},
-  {"description": "Resort spa package Bali", "amount": 25000, "category": "Travel"},
-
-  {"description": "Udemy Python course", "amount": 499, "category": "Education"},
-  {"description": "Coursera data science certificate", "amount": 4500, "category": "Education"},
-  {"description": "College tuition fee semester", "amount": 45000, "category": "Education"},
-  {"description": "Books textbooks semester", "amount": 2200, "category": "Education"},
-  {"description": "Online workshop React", "amount": 1500, "category": "Education"},
-  {"description": "AWS certification exam", "amount": 11000, "category": "Education"},
-  {"description": "LinkedIn Learning subscription", "amount": 1800, "category": "Education"},
-  {"description": "School fee payment", "amount": 8000, "category": "Education"},
-
-  {"description": "Monthly rent apartment", "amount": 25000, "category": "Housing"},
-  {"description": "Home maintenance plumber", "amount": 800, "category": "Housing"},
-  {"description": "Furniture sofa purchase", "amount": 18000, "category": "Housing"},
-  {"description": "Security deposit flat", "amount": 75000, "category": "Housing"},
-  {"description": "Washing machine repair", "amount": 1200, "category": "Housing"},
-  {"description": "Mortgage payment monthly", "amount": 1500, "category": "Housing"},
-  {"description": "Electrician repair home", "amount": 500, "category": "Housing"},
-
-  {"description": "Salon haircut and styling", "amount": 600, "category": "Personal Care"},
-  {"description": "Spa massage session", "amount": 1800, "category": "Personal Care"},
-  {"description": "Lakme makeup products", "amount": 1500, "category": "Personal Care"},
-  {"description": "Skincare moisturizer serum", "amount": 2500, "category": "Personal Care"},
-  {"description": "Nykaa beauty products", "amount": 1200, "category": "Personal Care"},
-  {"description": "Barber shop beard trim", "amount": 150, "category": "Personal Care"},
-
-  {"description": "Cricket kit purchase", "amount": 3500, "category": "Sports & Fitness"},
-  {"description": "Football boots cleats", "amount": 2800, "category": "Sports & Fitness"},
-  {"description": "Swimming pool membership", "amount": 3000, "category": "Sports & Fitness"},
-  {"description": "Tennis racket strings", "amount": 1200, "category": "Sports & Fitness"},
-  {"description": "Cycling cycling gloves", "amount": 800, "category": "Sports & Fitness"},
-  {"description": "Yoga mat equipment", "amount": 1000, "category": "Sports & Fitness"},
-
-  {"description": "Birthday gift friend", "amount": 1500, "category": "Gifts & Donations"},
-  {"description": "Wedding gift couple", "amount": 5000, "category": "Gifts & Donations"},
-  {"description": "NGO donation online", "amount": 1000, "category": "Gifts & Donations"},
-  {"description": "Charity fundraiser contribution", "amount": 2000, "category": "Gifts & Donations"},
-  {"description": "Anniversary surprise present", "amount": 3500, "category": "Gifts & Donations"},
-
-  {"description": "Zerodha mutual fund SIP", "amount": 5000, "category": "Investments"},
-  {"description": "Bitcoin crypto purchase", "amount": 10000, "category": "Investments"},
-  {"description": "Fixed deposit SBI bank", "amount": 50000, "category": "Investments"},
-  {"description": "PPF contribution yearly", "amount": 150000, "category": "Investments"},
-  {"description": "Stock market purchase HDFC", "amount": 8000, "category": "Investments"},
-  {"description": "Index fund Vanguard", "amount": 500, "category": "Investments"},
-
-  {"description": "Miscellaneous expenses", "amount": 200, "category": "Other"},
-  {"description": "Unknown transaction", "amount": 500, "category": "Other"},
-  {"description": "ATM withdrawal cash", "amount": 3000, "category": "Other"},
-  {"description": "Refund adjustment", "amount": 150, "category": "Other"},
-
-  {"description": "Lunch 250", "amount": 250, "category": "Food & Dining"},
-  {"description": "Coffee 150", "amount": 150, "category": "Food & Dining"},
-  {"description": "Uber 300", "amount": 300, "category": "Transport"},
-  {"description": "Netflix 649", "amount": 649, "category": "Entertainment"},
-  {"description": "Amazon order 2500", "amount": 2500, "category": "Shopping"},
-  {"description": "Rent 20000", "amount": 20000, "category": "Housing"},
-  {"description": "Doctor 500", "amount": 500, "category": "Health & Medical"},
-  {"description": "Hotel 5000", "amount": 5000, "category": "Travel"},
-  {"description": "Course fees 3000", "amount": 3000, "category": "Education"},
-  {"description": "SIP investment 10000", "amount": 10000, "category": "Investments"}
+  {
+    "description": "Uber ride to office",
+    "amount": 250,
+    "category": "Transport"
+  },
+  {
+    "description": "Ola cab airport",
+    "amount": 450,
+    "category": "Transport"
+  },
+  {
+    "description": "Metro card recharge",
+    "amount": 200,
+    "category": "Transport"
+  },
+  {
+    "description": "Petrol fill up",
+    "amount": 3000,
+    "category": "Transport"
+  },
+  {
+    "description": "Bus ticket local",
+    "amount": 15,
+    "category": "Transport"
+  },
+  {
+    "description": "Auto rickshaw to market",
+    "amount": 80,
+    "category": "Transport"
+  },
+  {
+    "description": "Flight ticket Delhi Mumbai",
+    "amount": 5500,
+    "category": "Transport"
+  },
+  {
+    "description": "Parking charges mall",
+    "amount": 100,
+    "category": "Transport"
+  },
+  {
+    "description": "Toll plaza highway",
+    "amount": 155,
+    "category": "Transport"
+  },
+  {
+    "description": "Rapido bike taxi",
+    "amount": 60,
+    "category": "Transport"
+  },
+  {
+    "description": "Lyft ride home",
+    "amount": 18,
+    "category": "Transport"
+  },
+  {
+    "description": "Train ticket IRCTC",
+    "amount": 750,
+    "category": "Transport"
+  },
+  {
+    "description": "Zomato dinner order",
+    "amount": 450,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "Swiggy lunch biryani",
+    "amount": 280,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "Starbucks coffee latte",
+    "amount": 350,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "Grocery D-Mart vegetables",
+    "amount": 1200,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "McDonald's combo meal",
+    "amount": 350,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "Pizza Hut order",
+    "amount": 600,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "Supermarket weekly groceries",
+    "amount": 2500,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "Restaurant dinner with family",
+    "amount": 2200,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "Milk and bread convenience store",
+    "amount": 120,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "KFC bucket chicken",
+    "amount": 550,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "Breakfast caf\u00e9 croissant",
+    "amount": 180,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "Dominos pizza order online",
+    "amount": 480,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "Tea and snacks office",
+    "amount": 50,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "Farmer market fresh produce",
+    "amount": 450,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "Sushi restaurant date night",
+    "amount": 3200,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "UberEats burger order",
+    "amount": 22,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "Amazon order earphones",
+    "amount": 1800,
+    "category": "Shopping"
+  },
+  {
+    "description": "Flipkart mobile phone",
+    "amount": 15000,
+    "category": "Shopping"
+  },
+  {
+    "description": "Myntra shirt kurta",
+    "amount": 1200,
+    "category": "Shopping"
+  },
+  {
+    "description": "Nike running shoes",
+    "amount": 4500,
+    "category": "Shopping"
+  },
+  {
+    "description": "Shopping mall clothes",
+    "amount": 3200,
+    "category": "Shopping"
+  },
+  {
+    "description": "Book purchase Flipkart",
+    "amount": 350,
+    "category": "Shopping"
+  },
+  {
+    "description": "Home decor items online",
+    "amount": 2100,
+    "category": "Shopping"
+  },
+  {
+    "description": "Stationery supplies office",
+    "amount": 450,
+    "category": "Shopping"
+  },
+  {
+    "description": "Laptop bag backpack",
+    "amount": 1800,
+    "category": "Shopping"
+  },
+  {
+    "description": "Walmart groceries and household",
+    "amount": 85,
+    "category": "Shopping"
+  },
+  {
+    "description": "Target home supplies",
+    "amount": 60,
+    "category": "Shopping"
+  },
+  {
+    "description": "Netflix subscription monthly",
+    "amount": 649,
+    "category": "Entertainment"
+  },
+  {
+    "description": "Spotify premium plan",
+    "amount": 119,
+    "category": "Entertainment"
+  },
+  {
+    "description": "Amazon Prime renewal",
+    "amount": 1499,
+    "category": "Entertainment"
+  },
+  {
+    "description": "Movie ticket PVR",
+    "amount": 350,
+    "category": "Entertainment"
+  },
+  {
+    "description": "Concert tickets Coldplay",
+    "amount": 5000,
+    "category": "Entertainment"
+  },
+  {
+    "description": "Steam game purchase",
+    "amount": 1200,
+    "category": "Entertainment"
+  },
+  {
+    "description": "Disney Plus hotstar",
+    "amount": 299,
+    "category": "Entertainment"
+  },
+  {
+    "description": "IPL match tickets",
+    "amount": 800,
+    "category": "Entertainment"
+  },
+  {
+    "description": "YouTube premium",
+    "amount": 189,
+    "category": "Entertainment"
+  },
+  {
+    "description": "PS5 game Spider-Man",
+    "amount": 3999,
+    "category": "Entertainment"
+  },
+  {
+    "description": "Hulu subscription",
+    "amount": 18,
+    "category": "Entertainment"
+  },
+  {
+    "description": "Amusement park tickets",
+    "amount": 1200,
+    "category": "Entertainment"
+  },
+  {
+    "description": "Electricity bill monthly",
+    "amount": 2200,
+    "category": "Bills & Utilities"
+  },
+  {
+    "description": "Airtel broadband internet",
+    "amount": 999,
+    "category": "Bills & Utilities"
+  },
+  {
+    "description": "Jio recharge monthly",
+    "amount": 239,
+    "category": "Bills & Utilities"
+  },
+  {
+    "description": "Gas cylinder booking",
+    "amount": 900,
+    "category": "Bills & Utilities"
+  },
+  {
+    "description": "Water bill quarterly",
+    "amount": 450,
+    "category": "Bills & Utilities"
+  },
+  {
+    "description": "DTH subscription tata sky",
+    "amount": 300,
+    "category": "Bills & Utilities"
+  },
+  {
+    "description": "Home insurance premium",
+    "amount": 8000,
+    "category": "Bills & Utilities"
+  },
+  {
+    "description": "Car insurance renewal",
+    "amount": 12000,
+    "category": "Bills & Utilities"
+  },
+  {
+    "description": "Phone bill Verizon",
+    "amount": 75,
+    "category": "Bills & Utilities"
+  },
+  {
+    "description": "AT&T wireless plan",
+    "amount": 65,
+    "category": "Bills & Utilities"
+  },
+  {
+    "description": "Credit card EMI payment",
+    "amount": 5000,
+    "category": "Bills & Utilities"
+  },
+  {
+    "description": "Doctor consultation fee",
+    "amount": 500,
+    "category": "Health & Medical"
+  },
+  {
+    "description": "Pharmacy medicine purchase",
+    "amount": 850,
+    "category": "Health & Medical"
+  },
+  {
+    "description": "Gym membership monthly",
+    "amount": 1500,
+    "category": "Health & Medical"
+  },
+  {
+    "description": "Blood test lab diagnostics",
+    "amount": 1200,
+    "category": "Health & Medical"
+  },
+  {
+    "description": "Dentist appointment cleaning",
+    "amount": 1500,
+    "category": "Health & Medical"
+  },
+  {
+    "description": "Health insurance premium",
+    "amount": 15000,
+    "category": "Health & Medical"
+  },
+  {
+    "description": "Yoga class monthly",
+    "amount": 2000,
+    "category": "Health & Medical"
+  },
+  {
+    "description": "Physiotherapy session",
+    "amount": 800,
+    "category": "Health & Medical"
+  },
+  {
+    "description": "Eye checkup ophthalmologist",
+    "amount": 600,
+    "category": "Health & Medical"
+  },
+  {
+    "description": "Prescription drugs CVS",
+    "amount": 45,
+    "category": "Health & Medical"
+  },
+  {
+    "description": "Protein powder supplement",
+    "amount": 2200,
+    "category": "Sports & Fitness"
+  },
+  {
+    "description": "Hotel booking Goa trip",
+    "amount": 8000,
+    "category": "Travel"
+  },
+  {
+    "description": "Airbnb stay weekend",
+    "amount": 3500,
+    "category": "Travel"
+  },
+  {
+    "description": "MakeMyTrip flight booking",
+    "amount": 12000,
+    "category": "Travel"
+  },
+  {
+    "description": "Visa application fee",
+    "amount": 7500,
+    "category": "Travel"
+  },
+  {
+    "description": "Travel insurance policy",
+    "amount": 2000,
+    "category": "Travel"
+  },
+  {
+    "description": "Suitcase purchase trip",
+    "amount": 4500,
+    "category": "Travel"
+  },
+  {
+    "description": "Expedia hotel resort",
+    "amount": 250,
+    "category": "Travel"
+  },
+  {
+    "description": "Foreign currency exchange",
+    "amount": 10000,
+    "category": "Travel"
+  },
+  {
+    "description": "Resort spa package Bali",
+    "amount": 25000,
+    "category": "Travel"
+  },
+  {
+    "description": "Udemy Python course",
+    "amount": 499,
+    "category": "Education"
+  },
+  {
+    "description": "Coursera data science certificate",
+    "amount": 4500,
+    "category": "Education"
+  },
+  {
+    "description": "College tuition fee semester",
+    "amount": 45000,
+    "category": "Education"
+  },
+  {
+    "description": "Books textbooks semester",
+    "amount": 2200,
+    "category": "Education"
+  },
+  {
+    "description": "Online workshop React",
+    "amount": 1500,
+    "category": "Education"
+  },
+  {
+    "description": "AWS certification exam",
+    "amount": 11000,
+    "category": "Education"
+  },
+  {
+    "description": "LinkedIn Learning subscription",
+    "amount": 1800,
+    "category": "Education"
+  },
+  {
+    "description": "School fee payment",
+    "amount": 8000,
+    "category": "Education"
+  },
+  {
+    "description": "Monthly rent apartment",
+    "amount": 25000,
+    "category": "Housing"
+  },
+  {
+    "description": "Home maintenance plumber",
+    "amount": 800,
+    "category": "Housing"
+  },
+  {
+    "description": "Furniture sofa purchase",
+    "amount": 18000,
+    "category": "Housing"
+  },
+  {
+    "description": "Security deposit flat",
+    "amount": 75000,
+    "category": "Housing"
+  },
+  {
+    "description": "Washing machine repair",
+    "amount": 1200,
+    "category": "Housing"
+  },
+  {
+    "description": "Mortgage payment monthly",
+    "amount": 1500,
+    "category": "Housing"
+  },
+  {
+    "description": "Electrician repair home",
+    "amount": 500,
+    "category": "Housing"
+  },
+  {
+    "description": "Salon haircut and styling",
+    "amount": 600,
+    "category": "Personal Care"
+  },
+  {
+    "description": "Spa massage session",
+    "amount": 1800,
+    "category": "Personal Care"
+  },
+  {
+    "description": "Lakme makeup products",
+    "amount": 1500,
+    "category": "Personal Care"
+  },
+  {
+    "description": "Skincare moisturizer serum",
+    "amount": 2500,
+    "category": "Personal Care"
+  },
+  {
+    "description": "Nykaa beauty products",
+    "amount": 1200,
+    "category": "Personal Care"
+  },
+  {
+    "description": "Barber shop beard trim",
+    "amount": 150,
+    "category": "Personal Care"
+  },
+  {
+    "description": "Cricket kit purchase",
+    "amount": 3500,
+    "category": "Sports & Fitness"
+  },
+  {
+    "description": "Football boots cleats",
+    "amount": 2800,
+    "category": "Sports & Fitness"
+  },
+  {
+    "description": "Swimming pool membership",
+    "amount": 3000,
+    "category": "Sports & Fitness"
+  },
+  {
+    "description": "Tennis racket strings",
+    "amount": 1200,
+    "category": "Sports & Fitness"
+  },
+  {
+    "description": "Cycling cycling gloves",
+    "amount": 800,
+    "category": "Sports & Fitness"
+  },
+  {
+    "description": "Yoga mat equipment",
+    "amount": 1000,
+    "category": "Sports & Fitness"
+  },
+  {
+    "description": "Birthday gift friend",
+    "amount": 1500,
+    "category": "Gifts & Donations"
+  },
+  {
+    "description": "Wedding gift couple",
+    "amount": 5000,
+    "category": "Gifts & Donations"
+  },
+  {
+    "description": "NGO donation online",
+    "amount": 1000,
+    "category": "Gifts & Donations"
+  },
+  {
+    "description": "Charity fundraiser contribution",
+    "amount": 2000,
+    "category": "Gifts & Donations"
+  },
+  {
+    "description": "Anniversary surprise present",
+    "amount": 3500,
+    "category": "Gifts & Donations"
+  },
+  {
+    "description": "Zerodha mutual fund SIP",
+    "amount": 5000,
+    "category": "Investments"
+  },
+  {
+    "description": "Bitcoin crypto purchase",
+    "amount": 10000,
+    "category": "Investments"
+  },
+  {
+    "description": "Fixed deposit SBI bank",
+    "amount": 50000,
+    "category": "Investments"
+  },
+  {
+    "description": "PPF contribution yearly",
+    "amount": 150000,
+    "category": "Investments"
+  },
+  {
+    "description": "Stock market purchase HDFC",
+    "amount": 8000,
+    "category": "Investments"
+  },
+  {
+    "description": "Index fund Vanguard",
+    "amount": 500,
+    "category": "Investments"
+  },
+  {
+    "description": "Miscellaneous expenses",
+    "amount": 200,
+    "category": "Other"
+  },
+  {
+    "description": "Unknown transaction",
+    "amount": 500,
+    "category": "Other"
+  },
+  {
+    "description": "ATM withdrawal cash",
+    "amount": 3000,
+    "category": "Other"
+  },
+  {
+    "description": "Refund adjustment",
+    "amount": 150,
+    "category": "Other"
+  },
+  {
+    "description": "Lunch 250",
+    "amount": 250,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "Coffee 150",
+    "amount": 150,
+    "category": "Food & Dining"
+  },
+  {
+    "description": "Uber 300",
+    "amount": 300,
+    "category": "Transport"
+  },
+  {
+    "description": "Netflix 649",
+    "amount": 649,
+    "category": "Entertainment"
+  },
+  {
+    "description": "Amazon order 2500",
+    "amount": 2500,
+    "category": "Shopping"
+  },
+  {
+    "description": "Rent 20000",
+    "amount": 20000,
+    "category": "Housing"
+  },
+  {
+    "description": "Doctor 500",
+    "amount": 500,
+    "category": "Health & Medical"
+  },
+  {
+    "description": "Hotel 5000",
+    "amount": 5000,
+    "category": "Travel"
+  },
+  {
+    "description": "Course fees 3000",
+    "amount": 3000,
+    "category": "Education"
+  },
+  {
+    "description": "SIP investment 10000",
+    "amount": 10000,
+    "category": "Investments"
+  },
+  {
+    "description": "Miscellaneous purchase",
+    "amount": 50,
+    "category": "Other"
+  },
+  {
+    "description": "Unknown transaction",
+    "amount": 100,
+    "category": "Other"
+  },
+  {
+    "description": "Random expense",
+    "amount": 30,
+    "category": "Other"
+  },
+  {
+    "description": "Various items",
+    "amount": 75,
+    "category": "Other"
+  },
+  {
+    "description": "Unclassified spending",
+    "amount": 60,
+    "category": "Other"
+  },
+  {
+    "description": "Diwali gift family",
+    "amount": 2000,
+    "category": "Gifts & Donations"
+  },
+  {
+    "description": "Christmas present colleague",
+    "amount": 1200,
+    "category": "Gifts & Donations"
+  },
+  {
+    "description": "Charity donation online",
+    "amount": 500,
+    "category": "Gifts & Donations"
+  },
+  {
+    "description": "Birthday gift friend",
+    "amount": 800,
+    "category": "Gifts & Donations"
+  },
+  {
+    "description": "Salon haircut trim",
+    "amount": 250,
+    "category": "Personal Care"
+  },
+  {
+    "description": "Facewash moisturizer skincare",
+    "amount": 450,
+    "category": "Personal Care"
+  },
+  {
+    "description": "Manicure pedicure salon",
+    "amount": 600,
+    "category": "Personal Care"
+  },
+  {
+    "description": "Zerodha stock purchase",
+    "amount": 5000,
+    "category": "Investments"
+  },
+  {
+    "description": "Mutual fund SIP transfer",
+    "amount": 2000,
+    "category": "Investments"
+  },
+  {
+    "description": "Plumber repair home maintenance",
+    "amount": 800,
+    "category": "Housing"
+  },
+  {
+    "description": "Badminton court booking",
+    "amount": 400,
+    "category": "Sports & Fitness"
+  },
+  {
+    "description": "Gym protein supplement whey",
+    "amount": 2000,
+    "category": "Sports & Fitness"
+  }
 ]

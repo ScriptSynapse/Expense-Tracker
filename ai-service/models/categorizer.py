@@ -122,9 +122,9 @@ def build_enhanced_text(description: str, amount: float = None) -> str:
             keyword_matches.append("AMOUNT_MICRO")
         elif amount < 50:
             keyword_matches.append("AMOUNT_SMALL")
-        elif amount < 200:
+        elif amount < 500:
             keyword_matches.append("AMOUNT_MEDIUM")
-        elif amount < 1000:
+        elif amount < 2000:
             keyword_matches.append("AMOUNT_LARGE")
         else:
             keyword_matches.append("AMOUNT_XLARGE")
@@ -142,20 +142,20 @@ class ExpenseCategorizer:
         MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
         FEEDBACK_PATH.parent.mkdir(parents=True, exist_ok=True)
 
+    def _build_tfidf(self):
+        return TfidfVectorizer(
+            ngram_range=(1, 2),
+            max_features=8000,
+            sublinear_tf=True,
+            analyzer="word",
+            min_df=1,
+        )
+
     def _build_pipeline(self):
+        """Build pipeline for cross-validation scoring (uses plain LinearSVC)."""
         return Pipeline([
-            ("tfidf", TfidfVectorizer(
-                ngram_range=(1, 2),
-                max_features=8000,
-                sublinear_tf=True,
-                analyzer="word",
-                min_df=1,
-            )),
-            ("clf", CalibratedClassifierCV(
-                LinearSVC(C=1.0, max_iter=2000, class_weight="balanced"),
-                cv=3,
-                method="sigmoid",
-            )),
+            ("tfidf", self._build_tfidf()),
+            ("clf", LinearSVC(C=1.0, max_iter=2000, class_weight="balanced", dual="auto")),
         ])
 
     def load_or_train(self):
@@ -198,12 +198,33 @@ class ExpenseCategorizer:
             logger.warning("No training data found. Using keyword-only fallback.")
             return
 
-        self.model = self._build_pipeline()
-        self.model.fit(texts, labels)
+        # Step 1: fit TF-IDF and base LinearSVC
+        tfidf = self._build_tfidf()
+        X = tfidf.fit_transform(texts)
+        svc = LinearSVC(C=1.0, max_iter=2000, class_weight="balanced", dual="auto")
+        svc.fit(X, labels)
 
-        # Cross-validation score
-        scores = cross_val_score(self._build_pipeline(), texts, labels, cv=min(5, len(texts)), scoring="accuracy")
-        logger.info(f"Model trained. CV Accuracy: {scores.mean():.3f} ± {scores.std():.3f} ({self.training_samples} samples)")
+        # Step 2: calibrate with cv='prefit' to avoid cross-validation issues
+        # with classes that have few samples
+        calibrated = CalibratedClassifierCV(svc, cv="prefit", method="sigmoid")
+        calibrated.fit(X, labels)
+
+        # Compose the final scoring pipeline (tfidf is already fitted)
+        self.model = Pipeline([("tfidf", tfidf), ("clf", calibrated)])
+
+        # Cross-validation for logging (uses plain LinearSVC to avoid cv restrictions)
+        from collections import Counter
+        min_class_count = min(Counter(labels).values())
+        cv_folds = max(2, min(5, min_class_count))
+        try:
+            scores = cross_val_score(self._build_pipeline(), texts, labels, cv=cv_folds, scoring="accuracy")
+            logger.info(
+                f"Model trained. CV Accuracy: {scores.mean():.3f} ± {scores.std():.3f} "
+                f"({self.training_samples} samples)"
+            )
+        except Exception as cv_err:
+            logger.warning(f"Cross-validation skipped: {cv_err}")
+            logger.info(f"Model trained on {self.training_samples} samples.")
 
         joblib.dump(self.model, MODEL_PATH)
         logger.info(f"Model saved to {MODEL_PATH}")
