@@ -675,7 +675,7 @@
     "category": "Other"
   },
   {
-    "description": "Unknown transaction",
+    "description": "Unrecognized bank transfer",
     "amount": 100,
     "category": "Other"
   },
@@ -710,7 +710,7 @@
     "category": "Gifts & Donations"
   },
   {
-    "description": "Birthday gift friend",
+    "description": "Birthday gift friend online",
     "amount": 800,
     "category": "Gifts & Donations"
   },
