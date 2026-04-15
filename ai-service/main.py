@@ -24,7 +24,14 @@ logging.basicConfig(
 logger = logging.getLogger("ai-service")
 
 # --- API Key Security ---
-API_KEY = os.getenv("AI_SERVICE_KEY", "internal-key")
+_raw_key = os.getenv("AI_SERVICE_KEY")
+if not _raw_key:
+    # Fail fast in production; allow default only in development
+    if os.getenv("NODE_ENV") == "production" or os.getenv("ENV") == "production":
+        raise RuntimeError("AI_SERVICE_KEY environment variable must be set in production.")
+    logger.warning("AI_SERVICE_KEY not set — using default 'internal-key' (development only).")
+    _raw_key = "internal-key"
+API_KEY = _raw_key
 api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
 
 
@@ -56,10 +63,12 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# Restrict CORS to the configured client origin; default to localhost for local dev
+_allowed_origins = os.getenv("CLIENT_URL", "http://localhost:3000").split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
+    allow_origins=[o.strip() for o in _allowed_origins],
+    allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
 
