@@ -4,16 +4,14 @@ const logger = require('../utils/logger');
 jest.mock('axios');
 jest.mock('../utils/logger', () => ({ warn: jest.fn() }));
 
-describe('utils/aiService', () => {
-  let post;
-  let aiService;
+const post = jest.fn();
+axios.create.mockReturnValue({ post });
+const aiService = require('../utils/aiService');
 
+describe('utils/aiService', () => {
   beforeEach(() => {
-    jest.resetModules();
     jest.clearAllMocks();
-    post = jest.fn();
-    axios.create.mockReturnValue({ post });
-    aiService = require('../utils/aiService');
+    post.mockReset();
   });
 
   it('categorize sends request and returns response data', async () => {
