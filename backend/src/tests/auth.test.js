@@ -4,6 +4,7 @@
 
 const request = require('supertest');
 const mongoose = require('mongoose');
+const { MongoMemoryServer } = require('mongodb-memory-server');
 const app = require('../server');
 const User = require('../models/User');
 
@@ -14,16 +15,22 @@ const TEST_USER = {
 };
 
 let token;
+let mongoServer;
+
+jest.setTimeout(30000);
 
 beforeAll(async () => {
-  const uri = process.env.MONGODB_TEST_URI || 'mongodb://localhost:27017/expense_tracker_test';
-  await mongoose.connect(uri);
+  mongoServer = await MongoMemoryServer.create();
+  await mongoose.connect(mongoServer.getUri(), { dbName: 'expense_tracker_test' });
   await User.deleteMany({ email: TEST_USER.email });
 });
 
 afterAll(async () => {
   await User.deleteMany({ email: TEST_USER.email });
   await mongoose.connection.close();
+  if (mongoServer) {
+    await mongoServer.stop();
+  }
 });
 
 describe('Auth Endpoints', () => {
