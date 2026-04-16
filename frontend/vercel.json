@@ -25,5 +25,6 @@
   ],
   "env": {
     "REACT_APP_API_URL": "https://your-backend.onrender.com/api"
-  }
+  },
+  "_note": "Replace REACT_APP_API_URL above with your actual Render backend URL after deployment, or override it in the Vercel dashboard under Settings > Environment Variables."
 }
