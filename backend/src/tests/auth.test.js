@@ -14,19 +14,25 @@ const TEST_USER = {
 };
 
 let token;
+const RUN_INTEGRATION = process.env.RUN_INTEGRATION_TESTS === 'true';
+const describeIfIntegration = RUN_INTEGRATION ? describe : describe.skip;
+
+jest.setTimeout(30000);
 
 beforeAll(async () => {
+  if (!RUN_INTEGRATION) return;
   const uri = process.env.MONGODB_TEST_URI || 'mongodb://localhost:27017/expense_tracker_test';
-  await mongoose.connect(uri);
+  await mongoose.connect(uri, { serverSelectionTimeoutMS: 5000 });
   await User.deleteMany({ email: TEST_USER.email });
 });
 
 afterAll(async () => {
+  if (!RUN_INTEGRATION) return;
   await User.deleteMany({ email: TEST_USER.email });
   await mongoose.connection.close();
 });
 
-describe('Auth Endpoints', () => {
+describeIfIntegration('Auth Endpoints', () => {
   describe('POST /api/auth/register', () => {
     it('should register a new user', async () => {
       const res = await request(app)
@@ -90,7 +96,7 @@ describe('Auth Endpoints', () => {
   });
 });
 
-describe('Expense Endpoints', () => {
+describeIfIntegration('Expense Endpoints', () => {
   describe('POST /api/expenses', () => {
     it('should create expense with manual category', async () => {
       const res = await request(app)
