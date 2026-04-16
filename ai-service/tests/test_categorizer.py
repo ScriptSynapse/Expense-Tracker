@@ -4,7 +4,9 @@ tests/test_categorizer.py — Unit tests for AI categorization
 
 import pytest
 import sys
-sys.path.insert(0, '..')
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from models.categorizer import ExpenseCategorizer, build_enhanced_text
 from models.predictor import SpendingPredictor
