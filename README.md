@@ -429,7 +429,9 @@ month, year, alertThreshold, alertSent, createdAt
 **Backend:**
 ```bash
 cd backend
-npm test
+RUN_INTEGRATION_TESTS=true npm test
+# Requires MongoDB running locally or MONGODB_TEST_URI to be set
+# Without RUN_INTEGRATION_TESTS=true, backend integration tests are skipped.
 # Coverage report generated in /coverage
 ```
 

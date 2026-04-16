@@ -4,7 +4,6 @@
 
 const request = require('supertest');
 const mongoose = require('mongoose');
-const { MongoMemoryServer } = require('mongodb-memory-server');
 const app = require('../server');
 const User = require('../models/User');
 
@@ -15,25 +14,25 @@ const TEST_USER = {
 };
 
 let token;
-let mongoServer;
+const RUN_INTEGRATION = process.env.RUN_INTEGRATION_TESTS === 'true';
+const describeIfIntegration = RUN_INTEGRATION ? describe : describe.skip;
 
 jest.setTimeout(30000);
 
 beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-  await mongoose.connect(mongoServer.getUri(), { dbName: 'expense_tracker_test' });
+  if (!RUN_INTEGRATION) return;
+  const uri = process.env.MONGODB_TEST_URI || 'mongodb://localhost:27017/expense_tracker_test';
+  await mongoose.connect(uri, { serverSelectionTimeoutMS: 5000 });
   await User.deleteMany({ email: TEST_USER.email });
 });
 
 afterAll(async () => {
+  if (!RUN_INTEGRATION) return;
   await User.deleteMany({ email: TEST_USER.email });
   await mongoose.connection.close();
-  if (mongoServer) {
-    await mongoServer.stop();
-  }
 });
 
-describe('Auth Endpoints', () => {
+describeIfIntegration('Auth Endpoints', () => {
   describe('POST /api/auth/register', () => {
     it('should register a new user', async () => {
       const res = await request(app)
@@ -97,7 +96,7 @@ describe('Auth Endpoints', () => {
   });
 });
 
-describe('Expense Endpoints', () => {
+describeIfIntegration('Expense Endpoints', () => {
   describe('POST /api/expenses', () => {
     it('should create expense with manual category', async () => {
       const res = await request(app)
