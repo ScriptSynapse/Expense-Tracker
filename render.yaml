@@ -1,0 +1,62 @@
+# render.yaml — Render.com infrastructure-as-code
+# Docs: https://render.com/docs/yaml-spec
+#
+# Deploys:
+#   1. expense-backend   — Node.js / Express  (Web Service)
+#   2. expense-ai        — Python / FastAPI    (Web Service)
+#
+# Before deploying:
+#   • Set the SECRET environment variables in the Render dashboard
+#     (values marked sync: false are not committed to source control).
+#   • Point MONGODB_URI at a MongoDB Atlas cluster.
+#   • After the AI service is deployed, copy its URL into the
+#     AI_SERVICE_URL env var of the backend service.
+
+services:
+  # ------------------------------------------------------------------
+  # Backend — Node.js / Express
+  # ------------------------------------------------------------------
+  - type: web
+    name: expense-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node src/server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "10000"            # Render injects $PORT; this is the default
+      - key: MONGODB_URI
+        sync: false               # Set in dashboard: mongodb+srv://…
+      - key: JWT_SECRET
+        generateValue: true       # Render auto-generates a secure random value
+      - key: JWT_EXPIRE
+        value: 7d
+      - key: AI_SERVICE_URL
+        sync: false               # Set after the AI service is deployed
+      - key: AI_SERVICE_KEY
+        sync: false               # Must match the AI service AI_SERVICE_KEY
+      - key: CLIENT_URL
+        sync: false               # Your Vercel frontend URL, e.g. https://expense.vercel.app
+      - key: LOG_LEVEL
+        value: info
+
+  # ------------------------------------------------------------------
+  # AI Service — Python / FastAPI
+  # ------------------------------------------------------------------
+  - type: web
+    name: expense-ai
+    runtime: python
+    rootDir: ai-service
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: AI_SERVICE_KEY
+        sync: false               # Set in dashboard; copy the same value to backend
+      - key: CLIENT_URL
+        sync: false               # Your Vercel frontend URL (for CORS)
+      - key: ENV
+        value: production
